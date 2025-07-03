@@ -15,6 +15,7 @@ class Product extends Model
         'brand',
         'category',
         'price',
+        'category_id',
         'description',
         'image_file_name',
         'created_at',
@@ -24,4 +25,9 @@ class Product extends Model
     ];
 
     public $timestamps = false;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
