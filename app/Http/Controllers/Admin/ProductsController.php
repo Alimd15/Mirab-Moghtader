@@ -21,8 +21,7 @@ class ProductsController extends Controller
         $orderBy = $request->input('orderBy');
 
         $query = Product::query();
-
-        // search functionality
+// search binary -> like arabi classes
         if (!empty($search)) {
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%$search%")
@@ -30,7 +29,7 @@ class ProductsController extends Controller
             });
         }
 
-        // sort functionality
+
         $validColumns = ['id', 'name', 'brand', 'category', 'price', 'created_at'];
         $validOrderBy = ['desc', 'asc'];
         if (!in_array($column, $validColumns)) {
@@ -41,7 +40,7 @@ class ProductsController extends Controller
         }
         $query->orderBy($column, $orderBy);
 
-        // pagination
+
         $count = $query->count();
         $totalPages = (int)ceil($count / $this->pageSize);
         if ($pageIndex < 1) $pageIndex = 1;
@@ -111,7 +110,6 @@ class ProductsController extends Controller
             $file = $request->file('image_file');
             $newFileName = now()->format('YmdHisv') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('products'), $newFileName);
-            // delete old image
             $oldImagePath = public_path('products/' . $product->image_file_name);
             if (file_exists($oldImagePath)) {
                 @unlink($oldImagePath);
@@ -142,4 +140,4 @@ class ProductsController extends Controller
         $product->delete();
         return redirect()->route('admin.products.index');
     }
-} 
+}

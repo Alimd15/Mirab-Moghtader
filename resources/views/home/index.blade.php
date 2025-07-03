@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="{{ asset('hero.png') }}" class="img-fluid" alt="فروشگاه آنلاین" />
+                <img src="{{ asset('storage/images/hero.png') }}" class="img-fluid" alt="فروشگاه آنلاین" />
             </div>
         </div>
     </div>

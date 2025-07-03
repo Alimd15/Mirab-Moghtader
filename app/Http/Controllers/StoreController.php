@@ -21,15 +21,15 @@ class StoreController extends Controller
 
         $query = Product::query();
 
-        // Get all distinct brands
+
         $allBrands = Product::select('brand')->distinct()->orderBy('brand')->pluck('brand');
 
-        // search functionality
+
         if (!empty($search)) {
             $query->where('name', 'like', "%$search%");
         }
 
-        // filter functionality
+
         if (!empty($brand)) {
             $query->where('brand', 'like', "%$brand%");
         }
@@ -37,22 +37,22 @@ class StoreController extends Controller
             $query->where('category', 'like', "%$category%");
         }
 
-        // sort functionality
+
         if ($sort === 'price_asc') {
             $query->orderBy('price', 'asc');
         } elseif ($sort === 'price_desc') {
             $query->orderBy('price', 'desc');
         } else {
-            $query->orderBy('id', 'desc'); // newest first
+            $query->orderBy('id', 'desc');
         }
 
-        // pagination
+
         $count = $query->count();
         $totalPages = (int)ceil($count / $this->pageSize);
         if ($pageIndex < 1) $pageIndex = 1;
         $products = $query->skip(($pageIndex - 1) * $this->pageSize)->take($this->pageSize)->get();
 
-        // Pass data to view
+
         $storeSearchModel = new StoreSearchModel();
         $storeSearchModel->search = $search;
         $storeSearchModel->brand = $brand;
@@ -76,4 +76,4 @@ class StoreController extends Controller
         }
         return view('store.details', ['product' => $product]);
     }
-} 
+}

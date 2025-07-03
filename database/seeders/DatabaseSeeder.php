@@ -20,11 +20,10 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // Check if there is at least one admin user
         $adminRoleId = DB::table('roles')->where('name', 'admin')->value('id');
         $adminUser = DB::table('role_user')->where('role_id', $adminRoleId)->first();
         if (!$adminUser) {
-            // Create the admin user
+
             $user = User::create([
                 'first_name' => 'Admin',
                 'last_name' => 'Admin',
@@ -33,7 +32,7 @@ class DatabaseSeeder extends Seeder
                 'address' => 'Admin Address',
                 'created_at' => now(),
             ]);
-            // Assign admin role
+
             DB::table('role_user')->insert([
                 'user_id' => $user->id,
                 'role_id' => $adminRoleId,
@@ -43,4 +42,4 @@ class DatabaseSeeder extends Seeder
             echo "Initial password: admin123\n";
         }
     }
-} 
+}

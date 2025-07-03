@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest; // فرض بر اعتبارسنجی است
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -84,7 +84,7 @@ class ProductsController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image_file')) {
-            // حذف تصویر قبلی
+            // hszf tasvir ghabli
             if ($product->image_file_name) {
                 Storage::disk('public')->delete($product->image_file_name);
             }

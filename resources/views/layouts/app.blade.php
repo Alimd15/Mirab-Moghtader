@@ -100,7 +100,7 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home.index') }}">
-                <img src="{{ asset('icon.svg') }}" alt="فروشگاه آنلاین" width="30" class="mx-2" />
+                <img src="{{ asset('storage/images/icon.svg') }}" alt="فروشگاه آنلاین" width="30" class="mx-2" />
                 فروشگاه آنلاین
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
@@ -144,7 +144,7 @@
 <!-- Footer -->
 <footer class="border-top footer text-muted mt-4">
     <div class="container">
-        <img src="{{ asset('icon.svg') }}" alt="فروشگاه آنلاین" width="30" class="mx-2" />
+        <img src="{{ asset('storage/images/icon.svg') }}" alt="فروشگاه آنلاین" width="30" class="mx-2" />
         &copy; 2025 - فروشگاه آنلاین - <a href="{{ route('home.privacy') }}">Privacy</a>
     </div>
 </footer>
